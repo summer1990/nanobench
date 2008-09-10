@@ -54,7 +54,7 @@ public class Nano implements Benchmark {
 		Executor executor = Executors.newFixedThreadPool(this.numberOfThread);
 		for (int i = 0; i < this.numberOfMeasurement; i++) {
 			executor.execute(new TimeMeasureProxy(new MeasureState(label,
-					numberOfMeasurement, i), task, this.listeners,
+					i, this.numberOfMeasurement, this.numberOfThread), task, this.listeners,
 					this.measureLatch));
 		}
 
@@ -70,7 +70,7 @@ public class Nano implements Benchmark {
 		Executor executor = Executors.newSingleThreadExecutor();
 		for (int i = 0; i < this.numberOfWarmUp; i++) {
 			executor.execute(new TimeMeasureProxy(new MeasureState("_warmup_",
-					this.numberOfWarmUp, i), task, this.listeners,
+					i, this.numberOfWarmUp, 1), task, this.listeners,
 					this.warmUpLatch));
 		}
 		try {
