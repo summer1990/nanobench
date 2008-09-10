@@ -8,6 +8,7 @@ import java.util.concurrent.Executors;
 
 import com.alisoft.nb.listener.Listeners;
 import com.alisoft.nb.listener.MeasureListener;
+import com.alisoft.nb.util.MemoryUtil;
 
 public class Nano implements Benchmark {
 	private int numberOfMeasurement = 20;
@@ -43,7 +44,9 @@ public class Nano implements Benchmark {
 	public void measure(String label, Runnable task) {
 		this.warmUpLatch = new CountDownLatch(this.numberOfWarmUp);
 		this.measureLatch = new CountDownLatch(this.numberOfMeasurement);
+		MemoryUtil.restoreJvm();
 		doWarmup(task);
+		MemoryUtil.restoreJvm();
 		doMeasure(label, task);
 	}
 

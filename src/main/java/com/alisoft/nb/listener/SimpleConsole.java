@@ -2,7 +2,6 @@ package com.alisoft.nb.listener;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import com.alisoft.nb.MeasureState;
