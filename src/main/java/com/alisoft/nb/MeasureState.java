@@ -40,7 +40,7 @@ public class MeasureState implements Comparable<MeasureState> {
 		this.endTime = endTime;
 	}
 	
-	public long getMeasurement() {
+	public long getMeasurements() {
 		return measurement;
 	}
 
