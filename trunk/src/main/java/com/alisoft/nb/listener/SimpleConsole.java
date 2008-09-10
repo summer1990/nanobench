@@ -15,6 +15,9 @@ public class SimpleConsole implements MeasureListener {
 	}
 
 	private void outputMeasureInfo(MeasureInfo measureInfo) {
+		if (measureInfo.getIndex() % 10 == 0) {
+			System.out.println();
+		}
 		System.out.print(measureInfo.getIndex() + ".");
 		if (isEnd(measureInfo)) {
 			long total = 0;

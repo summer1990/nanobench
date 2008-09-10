@@ -8,6 +8,7 @@ public class NanoBenchTest {
 	@Test
 	public void testMeasureWithSingleThread() {
 		Nano.bench().measure("single-thread", new Runnable() {
+			@SuppressWarnings("static-access")
 			public void run() {
 				try {
 					Thread.currentThread().sleep(500);
@@ -20,6 +21,7 @@ public class NanoBenchTest {
 	@Test
 	public void testMeasureWithMultiThreads() {
 		Nano.bench().threads(10).measure("multi-threads", new Runnable() {
+			@SuppressWarnings("static-access")
 			public void run() {
 				try {
 					Thread.currentThread().sleep(500);
