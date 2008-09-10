@@ -5,13 +5,15 @@ public class MeasureState implements Comparable<MeasureState> {
 	private long startTime;
 	private long endTime;
 	private long index;
-	private long numberOfMeasurement;
+	private int measurement;
+	private int threadCount;
 
-	public MeasureState(String label, long numberOfMeasurement, long index) {
+	public MeasureState(String label, long index, int measurement, int threadCount) {
 		super();
 		this.label = label;
-		this.numberOfMeasurement = numberOfMeasurement;
+		this.measurement = measurement;
 		this.index = index;
+		this.threadCount = threadCount;
 	}
 	
 	public long getIndex() {
@@ -38,12 +40,16 @@ public class MeasureState implements Comparable<MeasureState> {
 		this.endTime = endTime;
 	}
 	
-	public long getNumberOfMeasurement() {
-		return numberOfMeasurement;
+	public long getMeasurement() {
+		return measurement;
 	}
 
 	public long getMeasureTime() {
 		return endTime - startTime;
+	}
+
+	public int getThreadCount() {
+		return threadCount;
 	}
 
 	public int compareTo(MeasureState another) {
