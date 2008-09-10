@@ -31,7 +31,7 @@ public abstract class Nano implements Benchmark {
 		return this;
 	}
 
-	Nano() {
+	protected Nano() {
 		this.listeners = new CopyOnWriteArrayList<MeasureListener>();
 		this.listeners.add(Listeners.simpleConsole());
 	}
