@@ -1,5 +1,6 @@
 package com.alisoft.nb;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.CountDownLatch;
@@ -33,8 +34,6 @@ public class Nano implements Benchmark {
 	}
 
 	protected Nano() {
-		this.listeners = new CopyOnWriteArrayList<MeasureListener>();
-		this.listeners.add(Listeners.simpleConsole());
 	}
 
 	public void measure(Runnable task) {
@@ -54,7 +53,7 @@ public class Nano implements Benchmark {
 		Executor executor = Executors.newFixedThreadPool(this.numberOfThread);
 		for (int i = 0; i < this.numberOfMeasurement; i++) {
 			executor.execute(new TimeMeasureProxy(new MeasureState(label,
-					i, this.numberOfMeasurement, this.numberOfThread), task, this.listeners,
+					i, this.numberOfMeasurement, this.numberOfThread), task, this.getListeners(),
 					this.measureLatch));
 		}
 
@@ -70,7 +69,7 @@ public class Nano implements Benchmark {
 		Executor executor = Executors.newSingleThreadExecutor();
 		for (int i = 0; i < this.numberOfWarmUp; i++) {
 			executor.execute(new TimeMeasureProxy(new MeasureState("_warmup_",
-					i, this.numberOfWarmUp, 1), task, this.listeners,
+					i, this.numberOfWarmUp, 1), task, this.getListeners(),
 					this.warmUpLatch));
 		}
 		try {
@@ -79,8 +78,15 @@ public class Nano implements Benchmark {
 			throw new RuntimeException(e);
 		}
 	}
+	
+	private synchronized List<MeasureListener> getListeners() {
+		if (this.listeners == null) {
+			this.listeners = Arrays.asList(Listeners.simple());
+		}
+		return this.listeners;
+	}
 
-	void addListener(MeasureListener listener) {
+	public void addListener(MeasureListener listener) {
 		this.listeners.add(listener);
 	}
 

@@ -40,10 +40,10 @@ public class SimpleConsole implements MeasureListener {
 			timesList.clear();
 			StringBuffer sb = new StringBuffer("\n");
 			sb.append(state.getLabel() + "\t").append("avg:").append(
-					format(total / state.getMeasurement() / 1000000)).append(
+					format(total / state.getMeasurements() / 1000000)).append(
 					" ms\t").append("total:").append(format(total / 1000000))
 					.append(" ms\t").append("call ").append(
-							state.getMeasurement()).append(" times\t").append(
+							state.getMeasurements()).append(" times\t").append(
 							"in ").append(state.getThreadCount()).append(
 							" Threads\n");
 			log.info(sb.toString());
@@ -56,7 +56,7 @@ public class SimpleConsole implements MeasureListener {
 
 	private boolean isEnd(MeasureState times) {
 		synchronized (timesList) {
-			return times.getMeasurement() == timesList.size();
+			return times.getMeasurements() == timesList.size();
 		}
 	}
 
