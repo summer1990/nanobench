@@ -9,7 +9,7 @@ import java.util.concurrent.Executors;
 import com.alisoft.nb.listener.Listeners;
 import com.alisoft.nb.listener.MeasureListener;
 
-public abstract class Nano implements Benchmark {
+public class Nano implements Benchmark {
 	private int numberOfMeasurement = 20;
 	private int numberOfWarmUp = 10;
 	private int numberOfThread = 1;
@@ -18,7 +18,7 @@ public abstract class Nano implements Benchmark {
 	private List<MeasureListener> listeners;
 	
 	public static Nano bench() {
-		return new Nano() {};
+		return new Nano();
 	}
 	
 	public Nano measurements(int numberOfMeasurement) {
