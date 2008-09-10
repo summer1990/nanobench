@@ -1,7 +1,7 @@
 package com.alisoft.nb.listener;
 
-import com.alisoft.nb.MeasureInfo;
+import com.alisoft.nb.MeasureState;
 
 public interface MeasureListener {
-	void onMeasure(MeasureInfo info);
+	void onMeasure(MeasureState state);
 }

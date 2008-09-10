@@ -50,7 +50,7 @@ public class Nano implements Benchmark {
 	private void doMeasure(String label, Runnable task) {
 		Executor executor = Executors.newFixedThreadPool(this.numberOfThread);
 		for (int i = 0; i < this.numberOfMeasurement; i++) {
-			executor.execute(new TimeMeasureProxy(new MeasureInfo(label,
+			executor.execute(new TimeMeasureProxy(new MeasureState(label,
 					numberOfMeasurement, i), task, this.listeners,
 					this.measureLatch));
 		}
@@ -66,7 +66,7 @@ public class Nano implements Benchmark {
 	private void doWarmup(Runnable task) {
 		Executor executor = Executors.newSingleThreadExecutor();
 		for (int i = 0; i < this.numberOfWarmUp; i++) {
-			executor.execute(new TimeMeasureProxy(new MeasureInfo("_warmup_",
+			executor.execute(new TimeMeasureProxy(new MeasureState("_warmup_",
 					this.numberOfWarmUp, i), task, this.listeners,
 					this.warmUpLatch));
 		}
@@ -82,12 +82,12 @@ public class Nano implements Benchmark {
 	}
 
 	private static class TimeMeasureProxy implements Runnable {
-		private MeasureInfo times;
+		private MeasureState times;
 		private Runnable runnable;
 		private List<MeasureListener> listeners;
 		private CountDownLatch measureLatch;
 
-		public TimeMeasureProxy(MeasureInfo times, Runnable runnable,
+		public TimeMeasureProxy(MeasureState times, Runnable runnable,
 				List<MeasureListener> listeners, CountDownLatch measureLatch) {
 			super();
 			this.times = times;
@@ -104,7 +104,7 @@ public class Nano implements Benchmark {
 			this.measureLatch.countDown();
 		}
 
-		private void notifyMeasurement(MeasureInfo times) {
+		private void notifyMeasurement(MeasureState times) {
 			for (MeasureListener listener : this.listeners) {
 				listener.onMeasure(times);
 			}

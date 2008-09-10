@@ -1,13 +1,13 @@
 package com.alisoft.nb;
 
-public class MeasureInfo implements Comparable<MeasureInfo> {
+public class MeasureState implements Comparable<MeasureState> {
 	private String label;
 	private long startTime;
 	private long endTime;
 	private long index;
 	private long numberOfMeasurement;
 
-	public MeasureInfo(String label, long numberOfMeasurement, long index) {
+	public MeasureState(String label, long numberOfMeasurement, long index) {
 		super();
 		this.label = label;
 		this.numberOfMeasurement = numberOfMeasurement;
@@ -46,7 +46,7 @@ public class MeasureInfo implements Comparable<MeasureInfo> {
 		return endTime - startTime;
 	}
 
-	public int compareTo(MeasureInfo another) {
+	public int compareTo(MeasureState another) {
 		if (this.startTime > another.startTime) {
 			return -1;
 		} else if (this.startTime < another.startTime) {

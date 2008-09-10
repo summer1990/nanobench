@@ -5,40 +5,40 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import com.alisoft.nb.MeasureInfo;
+import com.alisoft.nb.MeasureState;
 
 public class SimpleConsole implements MeasureListener {
 	private static final DecimalFormat integerFormat = new DecimalFormat(
 			"#,##0.0");
-	private List<MeasureInfo> timesList = new ArrayList<MeasureInfo>();
+	private List<MeasureState> timesList = new ArrayList<MeasureState>();
 
-	public void onMeasure(MeasureInfo measureInfo) {
+	public void onMeasure(MeasureState state) {
 		synchronized (timesList) {
-			timesList.add(measureInfo);
+			timesList.add(state);
 		}
-		outputMeasureInfo(measureInfo);
+		outputMeasureInfo(state);
 	}
 
-	private void outputMeasureInfo(MeasureInfo measureInfo) {
+	private void outputMeasureInfo(MeasureState state) {
 		synchronized (timesList) {
 			if (timesList.size() % 50 == 0) {
 				System.out.println();
 			}
 			System.out.print(".");
 		}
-		if (isEnd(measureInfo)) {
+		if (isEnd(state)) {
 			long total = 0;
-			for (MeasureInfo t : timesList) {
+			for (MeasureState t : timesList) {
 				total += t.getMeasureTime();
 			}
 			timesList.clear();
 			StringBuffer sb = new StringBuffer("\n");
-			sb.append(measureInfo.getLabel() + "\t").append("avg: ").append(
-					format(total / measureInfo.getNumberOfMeasurement()
+			sb.append(state.getLabel() + "\t").append("avg: ").append(
+					format(total / state.getNumberOfMeasurement()
 							/ 1000000)).append(" ms\t").append("total: ")
 					.append(format(total / 1000000)).append(" ms\t").append(
 							"calls: ").append(
-							measureInfo.getNumberOfMeasurement()).append(
+							state.getNumberOfMeasurement()).append(
 							" times\n");
 			System.out.println(sb.toString());
 		}
@@ -48,7 +48,7 @@ public class SimpleConsole implements MeasureListener {
 		return integerFormat.format(value);
 	}
 
-	private boolean isEnd(MeasureInfo times) {
+	private boolean isEnd(MeasureState times) {
 		synchronized (timesList) {
 			return times.getNumberOfMeasurement() == timesList.size();
 		}
