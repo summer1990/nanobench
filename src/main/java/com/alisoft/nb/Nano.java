@@ -33,9 +33,6 @@ public class Nano implements Benchmark {
 		return this;
 	}
 
-	protected Nano() {
-	}
-
 	public void measure(Runnable task) {
 		measure("", task);
 	}
