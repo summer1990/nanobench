@@ -2,10 +2,10 @@
 
 <project>
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>org.jtestr</groupId>
+	<groupId>com.alisoft</groupId>
 	<artifactId>nanobench</artifactId>
 	<packaging>jar</packaging>
-	<version>0.1-SNAPSHOT</version>
+	<version>0.1</version>
 	<name>lightweight, simple Java benchmark framework</name>
   
 	<build>
