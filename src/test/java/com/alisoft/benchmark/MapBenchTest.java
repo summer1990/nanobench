@@ -12,7 +12,7 @@ import org.junit.Test;
 import com.alisoft.nb.Nano;
 
 public class MapBenchTest {
-	private static int measurements = 1000;
+	private static int measurements = 10000;
 	private static int threads = 3;
 	@Test
 	public void testHashTable() {
