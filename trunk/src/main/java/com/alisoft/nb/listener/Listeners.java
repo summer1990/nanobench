@@ -4,11 +4,11 @@ public final class Listeners {
 	private Listeners(){};
 	
 	public static MeasureListener[] simple() {
-		return new MeasureListener[] {new SimpleConsole(), new MemoryUsage()};
+		return new MeasureListener[] {new SimpleMeasure(), new MemoryUsage()};
 	}
 	
-	public static SimpleConsole simpleConsole() {
-		return new SimpleConsole();
+	public static SimpleMeasure simpleMeasure() {
+		return new SimpleMeasure();
 	}
 	
 	public static MemoryUsage memoryUsage() {
