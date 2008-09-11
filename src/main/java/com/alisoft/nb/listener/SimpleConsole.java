@@ -28,8 +28,8 @@ public class SimpleConsole implements MeasureListener {
 				System.out.println();
 
 			}
-			if (log.isDebugEnabled() && timesList.size() % 5 == 0) {
-				System.out.print(".");
+			if (log.isDebugEnabled()) {
+				System.out.print(state.getIndex() + ".");
 			}
 		}
 		if (isEnd(state)) {
@@ -42,10 +42,10 @@ public class SimpleConsole implements MeasureListener {
 			sb.append(state.getLabel() + "\t").append("avg:").append(
 					format(total / state.getMeasurements() / 1000000)).append(
 					" ms\t").append("total:").append(format(total / 1000000))
-					.append(" ms\t").append("call ").append(
+					.append(" ms\t").append("running ").append(
 							state.getMeasurements()).append(" times\t").append(
 							"in ").append(state.getThreadCount()).append(
-							" Threads\n");
+							" Threads");
 			log.info(sb.toString());
 		}
 	}

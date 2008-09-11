@@ -13,7 +13,7 @@ import com.alisoft.nb.Nano;
 
 public class MapBenchTest {
 	private static int measurements = 1000;
-	private static int threads = 10;
+	private static int threads = 3;
 	@Test
 	public void testHashTable() {
 		final Hashtable<Integer, Integer> hash = new Hashtable<Integer, Integer>();

@@ -22,11 +22,11 @@ public class MemoryUsage implements MeasureListener {
 
 	private void outputMeasureInfo(MeasureState state) {
 		if (isEnd(state)) {
-
 			StringBuffer sb = new StringBuffer("\n");
 			sb.append("memory-usage: ").append(state.getLabel()).append("\t")
-					.append(format(MemoryUtil.memoryUsed())).append(" ");
+					.append(format(MemoryUtil.memoryUsed())).append(" \n");
 			log.info(sb.toString());
+			count.set(0);
 		}
 	}
 
