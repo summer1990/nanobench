@@ -5,7 +5,7 @@
 	<groupId>com.alisoft</groupId>
 	<artifactId>nanobench</artifactId>
 	<packaging>jar</packaging>
-	<version>0.1</version>
+	<version>0.1.1-SNAPSHOT</version>
 	<name>lightweight, simple Java benchmark framework</name>
   
 	<build>
