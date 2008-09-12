@@ -32,14 +32,6 @@ public class MeasureState implements Comparable<MeasureState> {
 		return endTime;
 	}
 	
-	public void setStartTime(long startTime) {
-		this.startTime = startTime;
-	}
-
-	public void setEndTime(long endTime) {
-		this.endTime = endTime;
-	}
-	
 	public long getMeasurements() {
 		return measurement;
 	}
@@ -50,6 +42,14 @@ public class MeasureState implements Comparable<MeasureState> {
 
 	public int getThreadCount() {
 		return threadCount;
+	}
+	
+	public void startNow() {
+		this.startTime = System.nanoTime();
+	}
+	
+	public void endNow() {
+		this.endTime = System.nanoTime();
 	}
 
 	public int compareTo(MeasureState another) {
