@@ -87,25 +87,25 @@ public class Nano implements Benchmark {
 	}
 
 	private static class TimeMeasureProxy implements Runnable {
-		private MeasureState times;
+		private MeasureState state;
 		private Runnable runnable;
 		private List<MeasureListener> listeners;
 		private CountDownLatch measureLatch;
 
-		public TimeMeasureProxy(MeasureState times, Runnable runnable,
+		public TimeMeasureProxy(MeasureState state, Runnable runnable,
 				List<MeasureListener> listeners, CountDownLatch measureLatch) {
 			super();
-			this.times = times;
+			this.state = state;
 			this.runnable = runnable;
 			this.listeners = listeners;
 			this.measureLatch = measureLatch;
 		}
 
 		public void run() {
-			this.times.startNow();
+			this.state.startNow();
 			this.runnable.run();
-			this.times.endNow();
-			notifyMeasurement(times);
+			this.state.endNow();
+			notifyMeasurement(state);
 			this.measureLatch.countDown();
 		}
 
