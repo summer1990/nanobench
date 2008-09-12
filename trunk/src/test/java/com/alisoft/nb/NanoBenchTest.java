@@ -20,7 +20,7 @@ public class NanoBenchTest {
 	}
 	@Test
 	public void testMeasureWithMultiThreads() {
-		Nano.bench().threads(10).measure("multi-threads", new Runnable() {
+		Nano.bench().threads(3).measure("multi-threads", new Runnable() {
 			@SuppressWarnings("static-access")
 			public void run() {
 				try {
