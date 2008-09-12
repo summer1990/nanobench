@@ -102,9 +102,9 @@ public class Nano implements Benchmark {
 		}
 
 		public void run() {
-			this.times.setStartTime(System.nanoTime());
+			this.times.startNow();
 			this.runnable.run();
-			this.times.setEndTime(System.nanoTime());
+			this.times.endNow();
 			notifyMeasurement(times);
 			this.measureLatch.countDown();
 		}
