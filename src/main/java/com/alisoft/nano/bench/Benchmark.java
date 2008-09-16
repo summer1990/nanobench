@@ -1,4 +1,4 @@
-package com.alisoft.nb;
+package com.alisoft.nano.bench;
 
 
 public interface Benchmark {

@@ -9,7 +9,7 @@ import java.util.concurrent.ConcurrentHashMap;
 
 import org.junit.Test;
 
-import com.alisoft.nb.Nano;
+import com.alisoft.nano.bench.Nano;
 
 public class MapBenchTest {
 	private static int measurements = 10000;
